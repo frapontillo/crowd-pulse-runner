@@ -17,6 +17,7 @@
 package com.github.frapontillo.pulse.crowd.plugin;
 
 import com.github.frapontillo.pulse.crowd.data.entity.ProjectRun;
+import com.github.frapontillo.pulse.spi.IPlugin;
 import com.github.frapontillo.pulse.util.DateUtil;
 import com.github.frapontillo.pulse.util.ProcessUtil;
 import com.github.frapontillo.pulse.util.PulseLogger;
@@ -33,6 +34,10 @@ public class ProjectRunStartPlugin extends ProjectRunPlugin {
 
     @Override public String getName() {
         return PLUGIN_NAME;
+    }
+
+    @Override public IPlugin<Object, Object, ProjectRunOptions> getInstance() {
+        return new ProjectRunStartPlugin();
     }
 
     @Override protected void handleWake(ProjectRun projectRun, ProjectRunOptions parameters,
