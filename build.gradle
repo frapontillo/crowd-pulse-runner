@@ -18,6 +18,7 @@ plugins {
     id 'java'
     id 'application'
     id 'maven'
+    id "com.github.frapontillo.switchdependencies" version "0.0.1-alpha.0"
 }
 
 sourceCompatibility = 1.8
@@ -42,7 +43,13 @@ jar {
 }
 */
 
-dependencies {
-    compile 'com.github.frapontillo:pulse:0.0.2'
-    compile 'com.github.frapontillo:crowd-pulse-data-java:0.0.1'
+switchDependencies {
+    develop {
+        truthy = {
+            compile project(':crowd-pulse-data-java')
+        }
+        falsy = {
+            compile 'com.github.frapontillo:crowd-pulse-data-java:0.0.1'
+        }
+    }
 }
